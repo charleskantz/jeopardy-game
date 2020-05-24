@@ -2,6 +2,14 @@ $(async function () {
   const $button = $("button");
   const $tDiv = $("#table-container");
 
+  // for formatting category titles
+  function toTitleCase(str) {
+    let lcStr = str.toLowerCase();
+    return lcStr.replace(/(?:^|\s)\w/g, (match) => {
+        return match.toUpperCase();
+    });
+  }
+
   /** Fill the HTML table with the categories & cells for questions.
    * - The <thead> should be filled w/a <tr>, and a <td> for each category
    * - The <tbody> should be filled w/NUM-QUESTIONS_PER_CAT <tr>s,
@@ -33,7 +41,7 @@ $(async function () {
     for (let k = 0; k < CATEGORY_COUNT; k++) {
       let $tCell = $("<th>")
         .attr("id", `cat-${k}`)
-        .text(categories[k].title.toUpperCase());
+        .text(toTitleCase(categories[k].title));
       $tHead.append($tCell);
     }
 

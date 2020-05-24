@@ -87,10 +87,10 @@ class Category {
 
     // format each question object inside array
     let questionArray = selectFiveQuestions.map((question) => {
+      //
       if (question.answer.startsWith('<i>')) { 
         question.answer = question.answer.slice(3, -3);
       }
-      console.log(question.answer)
       return {
         question: question.question,
         answer: question.answer,
