@@ -21,7 +21,7 @@
 // ~~~ API GLOBALS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ API GLOBALS ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 let categories = [];  // holds all the categories and questions
-const BASE_URL = `http://jservice.io/api`;
+const BASE_URL = `https://jservice.io/api`;
 const QUESTION_COUNT = 5;
 const CATEGORY_COUNT = 6;
 
@@ -40,16 +40,16 @@ class Category {
     });
 
     // Lodash selects 6 random categories
-    let randomCategories = _.sampleSize(response.data, CATEGORY_COUNT) 
+    let randomCategories = _.sampleSize(response.data, CATEGORY_COUNT)
 
     // make new array with only the category IDs
-    let categoryIds = randomCategories.map((catObj) => { 
+    let categoryIds = randomCategories.map((catObj) => {
       return catObj.id;
     });
 
     return categoryIds;
   }
-  
+
   // Fill 'categories' array with 6 objects, each with 5 questions
   static async getAllCategoriesAndQuestions() {
     categories = [];
@@ -88,7 +88,7 @@ class Category {
     // format each question object inside array
     let questionArray = selectFiveQuestions.map((question) => {
       //
-      if (question.answer.startsWith('<i>')) { 
+      if (question.answer.startsWith('<i>')) {
         question.answer = question.answer.slice(3, -3);
       }
       return {
